@@ -188,6 +188,7 @@ btn13_1_HighPFilterGainUp = Button(f2, padx = 16, pady = 16, bd =18, fg = "black
 btn13_2_HighPFilterGainDown = Button(f2, padx = 16, pady = 16, bd =18, fg = "black", font=('arial', text_button_size, 'bold'), text="-", bg = "powder blue",
               command=lambda:[person.BtnClick_HighPassFilterGainDown(), display_HighPassFilter_gain()]).grid(row = 7, column=4)
 
+#fefefefe
 
 #btn13_EntryFqcyShift= Button(f2, padx = 32, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="update fqcyshift", bg = "powder blue",
  #             command=lambda:btnClick_UpdateGain(input_text)).grid(row = 5, column=6)
