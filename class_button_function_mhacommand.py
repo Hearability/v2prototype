@@ -49,6 +49,7 @@ class Person:
         if self.ONbb == True:
             # kill the mha program already running
             os.system('killall mha -9')
+            os.system('sleep 1')
             # start to run the config file gain_live.cfg with the updated gain value
             os.system('mha ?read:gain_live.cfg cmd=start &')
             print('test Gain On ok')
@@ -69,6 +70,7 @@ class Person:
 
                 # kill the mha program already running
                 os.system('killall mha -9')
+                os.system('sleep 1')
                 # start to run the config file gain_live.cfg with the updated gain value
                 os.system('mha ?read:gain_live.cfg cmd=start &')
 
