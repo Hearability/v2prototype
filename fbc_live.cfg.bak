@@ -1,0 +1,36 @@
+
+nchannels_in = 1
+#nchannels_in = 4
+
+fragsize = 64
+
+srate = 16000
+#srate = 44100
+
+mhalib = overlapadd
+
+mha.plugin_name = mhachain
+
+mha.mhachain.algos = [fshift_hilbert:fshift altplugs]
+
+mha.mhachain.fshift.df = 300
+#mha.mhachain.fshift.df = 400
+
+mha.mhachain.fshift.fmin = 400
+mha.mhachain.fshift.fmax = 500
+
+mha.mhachain.fshift.irslen = 1
+mha.mhachain.fshift.phasemode = none
+
+
+
+mha.mhachain.altplugs.plugs = [gain]
+mha.mhachain.altplugs.select = gain
+
+mha.mhachain.altplugs.gain.min = -40
+mha.mhachain.altplugs.gain.max = 50
+mha.mhachain.altplugs.gain.gains = [ 20 20 ]
+
+iolib = MHAIOFile
+io.in =  sine440.wav
+io.out = sine440_OUT.wav
