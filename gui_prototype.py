@@ -1,391 +1,209 @@
 from tkinter import*
-from research import*
-import os
-#==================================================================
-# simple functions just to test if the gui interface work fine. This section must be commented afterwords, and the next one should be filled
-# with the right file names and uncommented
+#from button_functions import*
+#from button_functions_mha import*
+
+from class_button_function_mhacommand import Person
 
 
 root = Tk()
-ON = False
-gainb = 0
-input_text = IntVar()
-
-"""
-def btnClick_On():
-
-    global ON
-    ON = True
-    print('test On ok')
-
-
-def btnClick_Off():
-
-    global ON
-    global counter
-    global gainb
-
-    ON = False
-    setVariableNull()
-    gainb = 0
-    print('test Off ok')
-
-
-def btnClick_GainOn():
-
-    global ON
-    if ON == True :
-        print('test Gain On ok')
-
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-def btnClick_UpdateGain():
-
-    global gainb
-    global input_text
-    global input
-    global ON
-
-    if ON == True:
-        # gainupdate_int = int("input_text")
-        gainupdate_int = input_text.get()
-
-        if (gainupdate_int > -41) & (gainupdate_int < 51):
-            replace_gain(gainupdate_int)
-            gainb = gainupdate_int
-            # gainnew = gainb + gainupdate_int
-            print(gainb)
-
-        else:
-            print('the value of the gain is outside the bounds [gmin, gmax]')
-
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-
-def btnClick_GainUp():
-
-    global ON
-    if ON == True :
-        global gainb
-        gainup = 5
-        gainb = gainb + gainup
-
-        if (gainb > -41) & (gainb < 51):
-            replace_gain(gainb)
-            print(gainb)
-        else:
-            print('the value of the gain is outside the bounds [gmin, gmax]')
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-def btnClick_GainDown():
-
-    global ON
-    if ON == True:
-        global gainb
-        gaindown = 5
-        gainb = gainb - gaindown
-
-        if (gainb > -41) & (gainb < 51):
-            replace_gain(gainb)
-            print(gainb)
-        else:
-            print('the value of the gain is outside the bounds [gmin, gmax]')
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-def btnClick_CoherenceOn():
-
-    global ON
-    if ON == True :
-        print('test Coherence On ok')
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-def btnClick_SCNoiseReductionOn():
-
-    global ON
-    if ON == True :
-        print('test SC Noise Reduction On ok')
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-def btnClick_DCOn():
-
-    global ON
-    if ON == True :
-        print('test DC On ok')
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-
-#==================================================================
-# end of the test gui interface
-"""
-
-
-
-#==================================================================
-# definition of the function for the buttons, which call the openMHA cfg files
-
-
-def btnClick_On():
-    
-    global ON
-    ON = True
-    #launch the jack server
-    os.system('./startdemo.sh')
-
-
-def btnClick_Off():
-
-    global ON
-    global counter
-    global gainb
-    
-    ON = False
-    # kill the mha program already running
-    os.system('killall mha -9')
-    # kill the jack server
-    os.system('killall jackd -9')
-    setVariableNull()
-    gainb = 0
-    print('test Off ok')
-
-
-def btnClick_GainOn():
-    
-    global ON
-    if ON == True :
-
-        # go to the directory where the config file gain_live.cfg is
-        #os.system('cd ./filepath/')
-        # kill the mha program already running
-        os.system('killall mha -9')
-        # start to run the config file gain_live.cfg with the updated gain value
-        os.system('mha ?read:gain_live.cfg cmd=start &')
-
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-
-def btnClick_UpdateGain():
-
-    global gainb
-    global input_text
-    global input
-    global ON
-
-    if ON == True:
-        # gainupdate_int = int("input_text")
-        gainupdate_int = input_text.get()
-
-        if (gainupdate_int > -41) & (gainupdate_int < 51):
-            replace_gain(gainupdate_int)
-            gainb = gainupdate_int
-            # gainnew = gainb + gainupdate_int
-            print(gainb)
-            
-            # go to the directory where the config file gain_live.cfg is
-            #os.system('cd ./filepath/')
-            # kill the mha program already running
-            os.system('killall mha -9')
-            # start to run the config file gain_live.cfg with the updated gain value
-            os.system('mha ?read:gain_live.cfg cmd=start &')
-
-        else:
-            print('the value of the gain is outside the bounds [gmin, gmax]')
-
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-       
-
-def btnClick_GainUp():
-
-    global ON
-    
-    if ON == True :
-        global gainb
-        gainup = 5
-        gainb = gainb + gainup
-
-        if (gainb > -41) & (gainb < 51):  # values should be replaced by the values of gmin and gmax in the file gain_live.cfg
-            
-            replace_gain(gainb)
-            print(gainb)
-            # go to the directory where the config file gain_live.cfg is
-            #os.system('cd ./filepath/')
-            # kill the mha program already running
-            os.system('killall mha -9')
-            # start to run the config file gain_live.cfg with the updated gain value
-            os.system('mha ?read:gain_live.cfg cmd=start &')
-
-        else:
-            print('the value of the gain is outside the bounds [gmin, gmax]')
-
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-
-def btnClick_GainDown():
-
-    global ON
-    if ON == True :
-
-        global gainb
-        gaindown = 5
-        gainb = gainb - gaindown
-
-        if (gainb > -41) & (gainb < 51):  # values should be replaced by the values of gmin and gmax in the file gain_live.cfg
-            
-            replace_gain(gainb)
-            print(gainb)
-            # go to the directory where the config file gain_live.cfg is
-            #os.system('cd ./filepath/')
-            # kill the mha program already running
-            os.system('killall mha -9')
-            # replace the variable of the gain of the cfg file by increasing it by the gain entered in parameters
-            #os.system('mha ?addsubst:<gains = [10 10]> <gains = [gainb gainb]>')  # if accepted...
-            # start to run the config file gain_live.cfg with the updated gain value
-            os.system('mha ?read:gain_live.cfg cmd=start &')
-
-        else:
-            print('the value of the gain is outside the bounds [gmin, gmax]')
-
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-
-def btnClick_CoherenceOn():
-
-    global ON
-    if ON == True :
-
-        # go to the directory where the config file coherence_live.cfg is
-        #os.system('cd ./filepath/')
-        # kill the mha program already running
-        os.system('killall mha -9')
-        # start to run the config file gain_live.cfg with the updated gain value
-        os.system('mha ?read:coherence_gain_live.cfg cmd=start &')  # check the right name of the file
-
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-
-def btnClick_SCNoiseReductionOn():
-
-    global ON
-    if ON == True :
-
-        # go to the directory where the config file SCNoiseReduction_live.cfg is
-        #os.system('cd ./filepath/')
-        # kill the mha program already running
-        os.system('killall mha -9')
-        # start to run the config file gain_live.cfg with the updated gain value
-        os.system('mha ?read:denoising.cfg cmd=start &')  # check the right name of the file
-
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-def btnClick_DCOn():
-
-    global ON
-    if ON == True :
-
-        # ideally one should at first place load the gain table 'gcdata' of the user profile retrieve with the ma gui interface
-        # then change the value of the gain table'gc_data' in the config file dynamic_compression_live.cfg by this new 'gcdata'
-        # for that one can use the mha command "os.system('mha ?addsubst:<gains = [10 10]> <gains = [gainb gainb]>')"
-        # go to the directory where the config file dynamic_compression_live.cfg is
-        #os.system('cd ./filepath/')
-        # kill the mha program already running
-        os.system('killall mha -9')
-        # start to run the config file gain_live.cfg with the updated gain value
-        #os.system('mha ?read:dynamic_compression_live.cfg cmd=start &')  # check the right name of the file
-
-    else:
-        print('On is not activated, please press On to launch the Jack server')
-
-
-
-#-----------------------------------------------------------------------------------------------------------
-# end of the defintion of the functions
 
 
 #-----------------------------------------------------------------------------------------------------------
 # gui interface
 
+root.title("Hearability GUI")
 
 
-root.title("Openmha GUI")
+# define the frames to delimatate the interface into areas--------------------------------------------------
 
 Tops = Frame(root, width=1600, height=50, bg="powder blue", relief=SUNKEN)
-Tops.pack(side=TOP)
-
-#f1 = Frame(root, width=300, height=700, bg="powder blue", relief=SUNKEN)
-#f1.pack(side=RIGHT)
+Tops.grid(row = 0, column = 4)
 
 f2 = Frame(root, width=1200, height=1200, bg="powder blue", relief=SUNKEN)
-f2.pack(side=LEFT)
+f2.grid(row = 2, column = 4)
 
-#f3 = Frame(root, width=1200, height=700, bg="powder blue", relief=SUNKEN)
-#f3.pack(side=TOP)
+UnTops = Frame(root, width=1600, height=50, bg="powder blue", relief=SUNKEN)
+UnTops.grid(row = 1, column = 4)
 
-lblInfo = Label(Tops, font=('arial', 50, 'bold'), text="OpenMHA control command", fg="Steel blue", bd=10, anchor="w")
+#title---------------------------------------------------------------------------------------------------------------
+
+lblInfo = Label(Tops, font=('arial', 48, 'bold'), text="Hearable Labs Prototype Control", fg="Steel blue", bd=10, anchor="w")
 lblInfo.grid(row = 0, column = 0)
 
-txtDisplay = Entry(f2, font=("Arial", 20, "bold"), bd=30, insertwidth = 4, bg='powder blue', justify  ='right')
-txtDisplay.grid(columnspan=4)
 
+#input field -------------------------------------------------------------------------------------------------------------------------------------------------
+
+input_text = IntVar()
+txtDisplay = Entry(f2, font=("Arial", 20, "bold"), bd=0, insertwidth = 4, bg='powder blue', justify  ='right')
+txtDisplay.grid(row = 1, column = 1)
 input_frame = Frame(txtDisplay, width = 312, height = 50, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
-input_frame.pack(side = TOP)
-input_field = Entry(input_frame, font = ('arial', 18, 'bold'), textvariable = input_text, width = 50, bg = "#eee", bd = 0, justify = RIGHT).pack()
+input_frame.grid(row = 0, column = 0)
+input_field = Entry(input_frame, font = ('arial', 32, 'bold'), textvariable = input_text, width = 5, bg = "#eee", bd = 8, justify = RIGHT).pack()
+
+
+var_fqcyshift = IntVar()
+txtDisplay_fqcyshift = Entry(f2, font=("Arial", 20, "bold"), bd=0, insertwidth = 4, bg='powder blue', justify  ='right')
+txtDisplay_fqcyshift.grid(row = 5, column = 1)
+input_frame_fqcyshift = Frame(txtDisplay_fqcyshift, width = 50, height = 50, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
+input_frame_fqcyshift.grid(row = 5, column = 1)
+input_field_fqcyshift = Entry(input_frame_fqcyshift, font = ('arial', 32, 'bold'), textvariable = var_fqcyshift, width = 5, bg = "#eee", bd = 8, justify = RIGHT).pack()
 
 
 
-btn1 = Button(f2, padx = 16, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="On", bg = "powder blue",
-              command=lambda:btnClick_On()).grid(row = 3, column=150)
 
-btn2 = Button(f2, padx = 16, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="Off", bg = "powder blue",
-              command=lambda:btnClick_Off()).grid(row = 4, column=150)
+#gain value display -------------------------------------------------------------------------------------------------------------------------------------------------
+person = Person()
 
-btn3 = Button(f2, padx = 16, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="Gain On", bg = "powder blue",
-              command=lambda:btnClick_GainOn()).grid(row = 1, column=0)
+def display_gain_gain():
+    global person
+    gainc3 = person.gainbb
+    gainStr = str(gainc3)
+    Label(f2, text= gainStr, fg="goldenrod", bg="black", font=("Helvetica", 40), width=2, height=1).grid(row=1, column = 6)
 
-btn4 = Button(f2, padx = 16, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="+", bg = "powder blue",
-              command=lambda:btnClick_GainUp()).grid(row = 1, column=1)
+def display_CoherenceFilter_gain():
+    global person
+    gainc3 = person.gainCoherencebb
+    gainStr = str(gainc3)
+    Label(f2, text= gainStr, fg="goldenrod", bg="black", font=("Helvetica", 40), width=2,height=1).grid(row=2, column=6)
 
-btn5 = Button(f2, padx = 16, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="-", bg = "powder blue",
-              command=lambda:btnClick_GainDown()).grid(row = 1, column=2)
+def display_SCNoiseReduction_gain():
+    global person
+    gainc3 = person.gainSCbb
+    gainStr = str(gainc3)
+    Label(f2, text= gainStr, fg="goldenrod", bg="black", font=("Helvetica", 40), width=2, height=1).grid(row=3, column = 6)
 
-btn6 = Button(f2, padx = 16, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="Coherence filter On", bg = "powder blue",
-              command=lambda:btnClick_CoherenceOn()).grid(row = 2, column=1)
+def display_fqcyshift_gain():
+    global person
+    gainc3 = person.gainfshiftbb
+    gainStr = str(gainc3)
+    Label(f2, text= gainStr, fg="goldenrod", bg="black", font=("Helvetica", 40), width=2, height=1).grid(row=5, column = 6)
 
-btn7 = Button(f2, padx = 16, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="SC Noise Reduction On", bg = "powder blue",
-              command=lambda:btnClick_SCNoiseReductionOn()).grid(row = 3, column=1)
+def display_LowPassFilter_gain():
+    global person
+    gainc3 = person.gainLPfilterbb
+    gainStr = str(gainc3)
+    Label(f2, text= gainStr, fg="goldenrod", bg="black", font=("Helvetica", 40), width=2, height=1).grid(row=6, column = 6)
 
-btn8 = Button(f2, padx = 16, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="Dynamic compression On", bg = "powder blue",
-              command=lambda:btnClick_DCOn()).grid(row = 4, column=1)
+def display_HighPassFilter_gain():
+    global person
+    gainc3 = person.gainHPfilterbb
+    gainStr = str(gainc3)
+    Label(f2, text= gainStr, fg="goldenrod", bg="black", font=("Helvetica", 40), width=2, height=1).grid(row=7, column = 6)
 
-btn9 = Button(f2, padx = 32, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="update gain", bg = "powder blue",
-              command=lambda:btnClick_UpdateGain()).grid(row =0, column=100)
+
+label_cfield_plugin = Label(f2, text="Option", fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=25, height=2).grid(row=0, column = 0)
+label_cfield_value = Label(f2, text="Value", fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=12, height=2).grid(row=0, column = 1)
+label_cfield_update_value = Label(f2, text="Update Value", fg="white smoke",bg="Steel blue", font="Helvetica 16 bold italic", width=25, height=2).grid(row=0, column = 2)
+label_cfield_VolumeUp = Label(f2, text="Vol Up", fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=10, height=2).grid(row=0, column = 3)
+label_cfield_VolumeDown = Label(f2, text="Vol Down", fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=10, height=2).grid(row=0, column = 4)
+label_cfield_Volume = Label(f2, text="Volume",fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=10, height=2).grid(row=0, column = 6)
+label_cfield_stamp = Label(f2, fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=5, height=2).grid(row=0, column = 5)
+
+#label_stamp = Label(f2, fg="powder blue", bg="powder blue", font="Helvetica 16 bold italic", width=4, height=4).grid(row=1, column = 5)
+
+label_Gain_gain = Label(f2, text="0", fg="goldenrod", bg="black", font=("Helvetica", 40), width=2, height=1).grid(row=1, column = 6)
+label_CoherenceFilter_gain = Label(f2, text="0", fg="goldenrod", bg="black",font=("Helvetica", 40), width=2, height=1).grid(row=2, column = 6)
+label_SCNoiseReduction_gain = Label(f2, text="0", fg="goldenrod", bg="black",font=("Helvetica", 40), width=2, height=1).grid(row=3, column = 6)
+label_FqcyShift_gain = Label(f2, text="0", fg="goldenrod", bg="black", font=("Helvetica", 40), width=2, height=1).grid(row=5, column = 6)
+label_LowPassFilter_gain = Label(f2, text="0", fg="goldenrod", bg="black", font=("Helvetica", 40), width=2, height=1).grid(row=6, column = 6)
+label_HighPassFilter_gain = Label(f2, text="0", fg="goldenrod", bg="black", font=("Helvetica", 40), width=2, height=1).grid(row=7, column = 6)
+
+
+def start():
+    btn1_On.configure(relief=SUNKEN, state=DISABLED)
+    person.BtnClick_On(), display_gain_gain(), display_SCNoiseReduction_gain(), display_fqcyshift_gain(), display_LowPassFilter_gain(),
+    display_HighPassFilter_gain(), display_CoherenceFilter_gain()
+
+def stop():
+    btn1_On.configure(relief=RAISED, state=NORMAL)
+    person.BtnClick_Off(), display_gain_gain(), display_SCNoiseReduction_gain(), display_fqcyshift_gain(), display_LowPassFilter_gain(),
+    display_HighPassFilter_gain(), display_CoherenceFilter_gain()
+
+#buttons -------------------------------------------------------------------------------------------------------------------------------------------------
+
+text_button_size = 15
+bd_buttons = 5
+
+btn1_On = Button(UnTops, padx=8, pady=8, width = 40, bd=bd_buttons, fg="black", font=('arial', text_button_size, 'bold'), text="On", bg = "goldenrod1",
+              command=start)
+btn1_On.grid(row = 0, column=0)
+
+btn2_Off = Button(UnTops, padx = 8, pady = 8, bd =5,  width = 40, fg = "black", font=('arial', text_button_size, 'bold'), text="Off", bg = "goldenrod1",
+              command=stop)
+btn2_Off.grid(row = 0, column=1)
+
+btn3_GainOn = Button(f2, width = 20, bd =5, pady = 16, fg = "black", font=('arial', text_button_size, 'bold'), text="Gain", bg = "powder blue",
+              command=lambda: person.BtnClick_GainOn()).grid(row = 1, column=0)
+
+btn3_0_UpdateGain = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Update Gain", bg = "powder blue",
+              command=lambda:[person.BtnClick_UpdateGain(input_text), display_gain_gain()]).grid(row =1, column=2)
+
+btn3_1_GainUp = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="+", bg = "powder blue",
+              command=lambda: [person.BtnClick_GainUp(), display_gain_gain()]).grid(row = 1, column=3)
+
+btn3_2_GainDown = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="-", bg = "powder blue",
+              command=lambda: [person.BtnClick_GainDown(), display_gain_gain()]).grid(row = 1, column=4)
+
+btn6_CoherenceFilOn = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Coherence Filter", bg = "powder blue",
+              command=lambda: person.BtnClick_CoherenceOn()).grid(row = 2, column=0)
+
+btn6_0_CoherenceFilOn = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="+", bg = "powder blue",
+              command=lambda: [person.BtnClick_CoherenceGainUp(), display_CoherenceFilter_gain() ]).grid(row = 2, column=3)
+
+btn6_1_CoherenceFilOn = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="-", bg = "powder blue",
+              command=lambda: [person.BtnClick_CoherenceGainDown(), display_CoherenceFilter_gain() ]).grid(row = 2, column=4)
+
+btn7_SCNoiseRedOn = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="SC Noise Reduction", bg = "powder blue",
+              command=lambda:[person.BtnClick_SCNoiseReductionOn(), display_SCNoiseReduction_gain()]).grid(row = 3, column=0)
+
+btn7_1_SCNoiseRed_GainUp = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="+", bg = "powder blue",
+              command=lambda:[person.BtnClick_SCNoiseReductionGainUp(), display_SCNoiseReduction_gain()]).grid(row = 3, column=3)
+
+btn7_2_SCNoiseRed_GainDown = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="-", bg = "powder blue",
+              command=lambda:[person.BtnClick_SCNoiseReductionGainDown(), display_SCNoiseReduction_gain()]).grid(row = 3, column=4)
+
+#btn8_DCOn = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Dynamic Compression", bg = "powder blue",
+#              command=lambda:person.BtnClick_DCOn()).grid(row = 4, column=0)
+
+btn10_FqcySchiftOn = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Fqcy Shifting", bg = "powder blue",
+              command=lambda:[person.BtnClick_FqcyShifting_On(), display_fqcyshift_gain()]).grid(row = 5, column=0)
+
+btn10_0_UpdateFqcySchift = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Update Fqcy Shifting", bg = "powder blue",
+              command=lambda:person.BtnClick_FqcyShifting_Update(var_fqcyshift)).grid(row = 5, column=2)
+
+btn10_1_FqcySchiftGainUp = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="+", bg = "powder blue",
+              command=lambda:[person.BtnClick_FqcyShifting_GainUp(), display_fqcyshift_gain()]).grid(row = 5, column=3)
+
+btn10_2_FqcySchiftGainDown = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="-", bg = "powder blue",
+              command=lambda:[person.BtnClick_FqcyShifting_GainDown(), display_fqcyshift_gain()]).grid(row = 5, column=4)
+
+btn12_LowPFilterOn = Button(f2, pady = 16, width = 20, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Low-Pass Filter", bg = "powder blue",
+              command=lambda:[person.BtnClick_LowPassFilterOn(), display_LowPassFilter_gain()]).grid(row = 6, column=0)
+
+btn12_1_LowPFilterGainUp = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="+", bg = "powder blue",
+              command=lambda:[person.BtnClick_LowPassFilterGainUp(), display_LowPassFilter_gain()]).grid(row = 6, column=3)
+
+btn12_2_LowPFilterGainDown = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="-", bg = "powder blue",
+              command=lambda:[person.BtnClick_LowPassFilterGainDown(), display_LowPassFilter_gain()]).grid(row = 6, column=4)
+
+btn13_HighPFilterOn = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial',text_button_size, 'bold'), text="High-Pass Filter", bg = "powder blue",
+              command=lambda:[person.BtnClick_HighPassFilterOn(), display_HighPassFilter_gain()]).grid(row = 7, column=0)
+
+btn13_1_HighPFilterGainUp = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="+", bg = "powder blue",
+              command=lambda:[person.BtnClick_HighPassFilterGainUp(), display_HighPassFilter_gain()]).grid(row = 7, column=3)
+
+btn13_2_HighPFilterGainDown = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="-", bg = "powder blue",
+              command=lambda:[person.BtnClick_HighPassFilterGainDown(), display_HighPassFilter_gain()]).grid(row = 7, column=4)
+
+#fefefefe
+
+#btn13_EntryFqcyShift= Button(f2, padx = 32, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="update fqcyshift", bg = "powder blue",
+ #             command=lambda:btnClick_UpdateGain(input_text)).grid(row = 5, column=6)
 #----------------------------------------------------------------------------------------------------------------------------
 #end gui interface
 
 root.mainloop()
+
 
 
 

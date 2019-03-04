@@ -83,11 +83,11 @@ class Person:
     def BtnClick_GainUp(self):
 
         if self.ONbb == True:
-
             gainup = 5
-            self.gainbb = self.gainbb + gainup
+            #self.gainbb = self.gainbb + gainup
 
-            if (self.gainbb > -41) & (self.gainbb < 51):
+            if (self.gainbb+gainup > -41) & (self.gainbb+gainup < 51):
+                self.gainbb = self.gainbb + gainup
                 replace_gain2(self.gainbb)
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -104,10 +104,9 @@ class Person:
 
         if self.ONbb == True:
 
-            gaindown = 5
-            self.gainbb = self.gainbb - gaindown
-
-            if (self.gainbb > -41) & (self.gainbb < 51):
+            gaindown = -5
+            if (self.gainbb+gaindown > -41) & (self.gainbb+gaindown < 51):
+                self.gainbb = self.gainbb + gaindown
                 replace_gain2(self.gainbb)
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -136,9 +135,11 @@ class Person:
 
         if self.ONbb == True:
             gainup = 5
-            self.gainCoherencebb = self.gainCoherencebb + gainup
 
-            if (self.gainCoherencebb > -41) & (self.gainCoherencebb < 51):
+
+            if (self.gainCoherencebb+gainup > -41) & (self.gainCoherencebb+gainup < 51):
+
+                self.gainCoherencebb = self.gainCoherencebb + gainup
                 replace_SCfiltergain2(self.gainCoherencebb)
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -154,10 +155,10 @@ class Person:
     def BtnClick_CoherenceGainDown(self):
 
         if self.ONbb == True:
-            gaindown = 5
-            self.gainCoherencebb = self.gainCoherencebb - gaindown
+            gaindown = -5
 
-            if (self.gainCoherencebb > -41) & (self.gainCoherencebb < 51):
+            if (self.gainCoherencebb+gaindown > -41) & (self.gainCoherencebb+gaindown < 51):
+                self.gainCoherencebb = self.gainCoherencebb + gaindown
                 replace_Coherencefiltergain2(self.gainCoherencebb)
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -186,9 +187,9 @@ class Person:
 
         if self.ONbb == True:
             gainup = 5
-            self.gainSCbb = self.gainSCbb + gainup
 
-            if (self.gainSCbb > -41) & (self.gainSCbb < 51):
+            if (self.gainSCbb+gainup > -41) & (self.gainSCbb+gainup < 51):
+                self.gainSCbb = self.gainSCbb + gainup
                 replace_SCfiltergain2(self.gainSCbb)
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -205,10 +206,10 @@ class Person:
     def BtnClick_SCNoiseReductionGainDown(self):
 
         if self.ONbb == True:
-            gaindown = 5
-            self.gainSCbb = self.gainSCbb - gaindown
+            gaindown = -5
 
-            if (self.gainSCbb > -41) & (self.gainSCbb < 51):
+            if (self.gainSCbb+gaindown > -41) & (self.gainSCbb+gaindown < 51):
+                self.gainSCbb = self.gainSCbb + gaindown
                 replace_SCfiltergain2(self.gainSCbb)
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -234,9 +235,9 @@ class Person:
 
         if self.ONbb == True:
             fqcy_up = 300
-            self.fqcybb = self.fqcybb + fqcy_up
 
-            if (self.fqcybb > 0) & (self.fqcybb < 15000):
+            if (self.fqcybb+fqcy_up > 0) & (self.fqcybb+fqcy_up < 15000):
+                self.fqcybb = self.fqcybb + fqcy_up
                 replace_fqcyshift(self.fqcybb)
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -274,9 +275,9 @@ class Person:
 
         if self.ONbb == True:
             gainup = 5
-            self.gainfshiftbb = self.gainfshiftbb + gainup
 
-            if (self.gainfshiftbb > -41) & (self.gainfshiftbb < 51):
+            if (self.gainfshiftbb+gainup > -41) & (self.gainfshiftbb+gainup < 51):
+                self.gainfshiftbb = self.gainfshiftbb + gainup
                 replace_fshiftgain2(self.gainfshiftbb)
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -292,10 +293,10 @@ class Person:
     def BtnClick_FqcyShifting_GainDown(self):
 
         if self.ONbb == True:
-            gaindown = 5
-            self.gainfshiftbb = self.gainfshiftbb - gaindown
+            gaindown = -5
 
-            if (self.gainfshiftbb > -41) & (self.gainfshiftbb < 51):
+            if (self.gainfshiftbb+gaindown > -41) & (self.gainfshiftbb+gaindown < 51):
+                self.gainfshiftbb = self.gainfshiftbb + gaindown
                 replace_fshiftgain2(self.gainfshiftbb)
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -324,9 +325,9 @@ class Person:
 
         if self.ONbb == True:
             gainup = 5
-            self.gainLPfilterbb = self.gainLPfilterbb  + gainup
 
-            if (self.gainLPfilterbb  > -41) & (self.gainLPfilterbb  < 51):
+            if (self.gainLPfilterbb+gainup  > -41) & (self.gainLPfilterbb+gainup  < 51):
+                self.gainLPfilterbb = self.gainLPfilterbb + gainup
                 replace_LPfiltergain2(self.gainLPfilterbb )
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -342,10 +343,10 @@ class Person:
     def BtnClick_LowPassFilterGainDown(self):
 
         if self.ONbb == True:
-            gaindown = 5
-            self.gainLPfilterbb  = self.gainLPfilterbb  - gaindown
+            gaindown = -5
 
-            if (self.gainLPfilterbb  > -41) & (self.gainLPfilterbb  < 51):
+            if (self.gainLPfilterbb + gaindown > -41) & (self.gainLPfilterbb + gaindown < 51):
+                self.gainLPfilterbb = self.gainLPfilterbb + gaindown
                 replace_LPfiltergain2(self.gainLPfilterbb )
                 # kill the mha program already running
                 os.system('killall mha -9')
@@ -374,9 +375,9 @@ class Person:
 
         if self.ONbb == True:
             gainup = 5
-            self.gainHPfilterbb = self.gainHPfilterbb + gainup
 
-            if (self.gainHPfilterbb > -41) & (self.gainHPfilterbb < 51):
+            if (self.gainHPfilterbb + gainup > -41) & (self.gainHPfilterbb + gainup < 51):
+                self.gainHPfilterbb = self.gainHPfilterbb + gainup
                 # kill the mha program already running
                 os.system('killall mha -9')
                 # start to run the config file gain_live.cfg with the updated gain value
@@ -392,10 +393,10 @@ class Person:
     def BtnClick_HighPassFilterGainDown(self):
 
         if self.ONbb == True:
-            gaindown = 5
-            self.gainHPfilterbb = self.gainHPfilterbb - gaindown
+            gaindown = -5
 
-            if (self.gainHPfilterbb > -41) & (self.gainHPfilterbb < 51):
+            if (self.gainHPfilterbb+gaindown > -41) & (self.gainHPfilterbb+gaindown < 51):
+                self.gainHPfilterbb = self.gainHPfilterbb + gaindown
                 replace_HPfiltergain2(self.gainHPfilterbb)
                 # kill the mha program already running
                 os.system('killall mha -9')
