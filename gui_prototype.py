@@ -36,20 +36,16 @@ lblInfo.grid(row = 0, column = 0)
 input_text = IntVar()
 txtDisplay = Entry(f2, font=("Arial", 20, "bold"), bd=0, insertwidth = 4, bg='powder blue', justify  ='right')
 txtDisplay.grid(row = 1, column = 1)
-input_frame = Frame(txtDisplay, width = 312, height = 50, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
+input_frame = Frame(txtDisplay, width = 312, height = 40, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
 input_frame.grid(row = 0, column = 0)
-input_field = Entry(input_frame, font = ('arial', 32, 'bold'), textvariable = input_text, width = 5, bg = "#eee", bd = 8, justify = RIGHT).pack()
-
+input_field = Entry(input_frame, font = ('arial', 25, 'bold'), textvariable = input_text, width = 5, bg = "#eee", bd = 8, justify = RIGHT).pack()
 
 var_fqcyshift = IntVar()
 txtDisplay_fqcyshift = Entry(f2, font=("Arial", 20, "bold"), bd=0, insertwidth = 4, bg='powder blue', justify  ='right')
 txtDisplay_fqcyshift.grid(row = 5, column = 1)
-input_frame_fqcyshift = Frame(txtDisplay_fqcyshift, width = 50, height = 50, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
+input_frame_fqcyshift = Frame(txtDisplay_fqcyshift, width = 50, height = 40, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
 input_frame_fqcyshift.grid(row = 5, column = 1)
-input_field_fqcyshift = Entry(input_frame_fqcyshift, font = ('arial', 32, 'bold'), textvariable = var_fqcyshift, width = 5, bg = "#eee", bd = 8, justify = RIGHT).pack()
-
-
-
+input_field_fqcyshift = Entry(input_frame_fqcyshift, font = ('arial', 25, 'bold'), textvariable = var_fqcyshift, width = 5, bg = "#eee", bd = 8, justify = RIGHT).pack()
 
 #gain value display -------------------------------------------------------------------------------------------------------------------------------------------------
 person = Person()
@@ -94,12 +90,9 @@ def display_HighPassFilter_gain():
 label_cfield_plugin = Label(f2, text="Option", fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=25, height=2).grid(row=0, column = 0)
 label_cfield_value = Label(f2, text="Value", fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=12, height=2).grid(row=0, column = 1)
 label_cfield_update_value = Label(f2, text="Update Value", fg="white smoke",bg="Steel blue", font="Helvetica 16 bold italic", width=25, height=2).grid(row=0, column = 2)
-label_cfield_VolumeUp = Label(f2, text="Vol Up", fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=10, height=2).grid(row=0, column = 3)
-label_cfield_VolumeDown = Label(f2, text="Vol Down", fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=10, height=2).grid(row=0, column = 4)
+label_cfield_VolumeUp = Label(f2, text="Vol Up", fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=12, height=2).grid(row=0, column = 3)
+label_cfield_VolumeDown = Label(f2, text="Vol Down", fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=12, height=2).grid(row=0, column = 4)
 label_cfield_Volume = Label(f2, text="Volume",fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=10, height=2).grid(row=0, column = 6)
-label_cfield_stamp = Label(f2, fg="white smoke", bg="Steel blue", font="Helvetica 16 bold italic", width=5, height=2).grid(row=0, column = 5)
-
-#label_stamp = Label(f2, fg="powder blue", bg="powder blue", font="Helvetica 16 bold italic", width=4, height=4).grid(row=1, column = 5)
 
 label_Gain_gain = Label(f2, text="0", fg="goldenrod", bg="black", font=("Helvetica", 40), width=2, height=1).grid(row=1, column = 6)
 label_CoherenceFilter_gain = Label(f2, text="0", fg="goldenrod", bg="black",font=("Helvetica", 40), width=2, height=1).grid(row=2, column = 6)
@@ -165,10 +158,10 @@ btn7_2_SCNoiseRed_GainDown = Button(f2, width = 10, pady = 16, bd =5, fg = "blac
 #btn8_DCOn = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Dynamic Compression", bg = "powder blue",
 #              command=lambda:person.BtnClick_DCOn()).grid(row = 4, column=0)
 
-btn10_FqcySchiftOn = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Fqcy Shifting", bg = "powder blue",
+btn10_FqcySchiftOn = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Frequency Shift", bg = "powder blue",
               command=lambda:[person.BtnClick_FqcyShifting_On(), display_fqcyshift_gain()]).grid(row = 5, column=0)
 
-btn10_0_UpdateFqcySchift = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Update Fqcy Shifting", bg = "powder blue",
+btn10_0_UpdateFqcySchift = Button(f2, width = 20, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="Update Frequency", bg = "powder blue",
               command=lambda:person.BtnClick_FqcyShifting_Update(var_fqcyshift)).grid(row = 5, column=2)
 
 btn10_1_FqcySchiftGainUp = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="+", bg = "powder blue",
@@ -194,8 +187,6 @@ btn13_1_HighPFilterGainUp = Button(f2, width = 10, pady = 16, bd =5, fg = "black
 
 btn13_2_HighPFilterGainDown = Button(f2, width = 10, pady = 16, bd =5, fg = "black", font=('arial', text_button_size, 'bold'), text="-", bg = "powder blue",
               command=lambda:[person.BtnClick_HighPassFilterGainDown(), display_HighPassFilter_gain()]).grid(row = 7, column=4)
-
-#fefefefe
 
 #btn13_EntryFqcyShift= Button(f2, padx = 32, pady = 16, bd =18, fg = "black", font=('arial', 20, 'bold'), text="update fqcyshift", bg = "powder blue",
  #             command=lambda:btnClick_UpdateGain(input_text)).grid(row = 5, column=6)
