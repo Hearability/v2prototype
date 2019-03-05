@@ -4,32 +4,33 @@ from tkinter import*
 
 from class_button_function_mhacommand import Person
 
-
 root = Tk()
-
 
 #-----------------------------------------------------------------------------------------------------------
 # gui interface
 
-root.title("Hearability GUI")
-
-
+root.title("Hearable Labs GUI")
+root.configure(background='black')
 # define the frames to delimatate the interface into areas--------------------------------------------------
 
-Tops = Frame(root, width=1600, height=50, bg="powder blue", relief=SUNKEN)
-Tops.grid(row = 0, column = 4)
+Tops = Frame(root, width=1600, height=1500, bg="black", relief=FLAT)
+Tops.grid(row = 0, column = 0)
+
+UnTops = Frame(root, width=1600, height=1200, bg="black", relief=SUNKEN)
+UnTops.grid(row = 1, column = 0)
 
 f2 = Frame(root, width=1200, height=1200, bg="powder blue", relief=SUNKEN)
-f2.grid(row = 2, column = 4)
+f2.grid(row = 2, column = 0)
 
-UnTops = Frame(root, width=1600, height=50, bg="powder blue", relief=SUNKEN)
-UnTops.grid(row = 1, column = 4)
 
 #title---------------------------------------------------------------------------------------------------------------
 
-lblInfo = Label(Tops, font=('arial', 48, 'bold'), text="Hearable Labs Prototype Control", fg="Steel blue", bd=10, anchor="w")
-lblInfo.grid(row = 0, column = 0)
+#lblInfo = Label(Tops, font=('arial', 48, 'bold'), text="Hearable Labs Prototype Control", fg="Steel blue", bd=10, anchor="w")
+#lblInfo.grid(row = 0, column = 0)
 
+img = PhotoImage(file="newlogo.png")
+lblInfo = Label(Tops, image = img,  bd=0)#, bg='red', width='1200')
+lblInfo.grid(row = 0, column = 0)
 
 #input field -------------------------------------------------------------------------------------------------------------------------------------------------
 
